@@ -9,9 +9,10 @@ class ProductController extends Controller
 {
     // Method to show a single product
     public function show($id)
-{
-    $product = Product::findOrFail($id);
-    return response()->json($product);
+    {
+        $product = Product::with('optionTypes.optionValues')->findOrFail($id);
+        return response()->json($product);
+    }
 }
 //    {
 //        // Retrieve the product by id with its related option types and option values
@@ -19,4 +20,4 @@ class ProductController extends Controller
 //        // Return the product as a JSON response
 //        return response()->json($product);
 //    }
-}
+

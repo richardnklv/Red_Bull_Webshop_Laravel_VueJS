@@ -9,7 +9,7 @@ class OptionValue extends Model
 {
     use HasFactory;
 
-    public function type()
+    public function type(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(OptionType::class, 'option_type_id');
     }

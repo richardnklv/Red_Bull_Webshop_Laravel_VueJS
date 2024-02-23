@@ -1,22 +1,26 @@
 <template>
     <div class="product-options">
-        <div v-for="optionType in options" :key="optionType.id" class="option-group">
-            <label :for="`option-${optionType.id}`">{{ optionType.name }}</label>
-            <select :id="`option-${optionType.id}`" v-model="selectedOptions[optionType.name]" @change="updateOptions">
-                <option v-for="option in optionType.values" :key="option.id" :value="option.id">
-                    {{ option.name }} (+ {{ option.additional_cost }}
+        <div v-for="optionType in optionTypes" :key="optionType.id">
+            <h3>{{ optionType.type }}</h3>
+            <select v-model="selectedOptions[optionType.type]">
+                <option
+                    v-for="optionValue in optionType.option_values"
+                    :key="optionValue.id"
+                    :value="optionValue.id">
+                    {{ optionValue.value }} (+${{ optionValue.additional_cost }})
                 </option>
             </select>
         </div>
     </div>
-
 </template>
-<script>
-import {options} from "axios";
 
+<script>
 export default {
+    name: 'ProductOptions',
     props: {
-        options: Array
+        optionTypes: {
+            type: Array
+        }
     },
     data() {
         return {
@@ -24,10 +28,20 @@ export default {
         };
     },
     methods: {
-        updateOptions() {
-            this.$emit('updatePrice', this.selectedOptions);
+        updatePrice() {
+            this.$emit('update-price', this.selectedOptions);
+        }
+    },
+    watch: {
+        selectedOptions: {
+            handler() {
+                this.updatePrice();
+            },
+            deep: true
         }
     }
 }
-
 </script>
+
+<style scoped>
+</style>

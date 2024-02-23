@@ -1,7 +1,8 @@
 <template>
     <div class="product-info">
-        <h1>{{ name }}</h1>
-        <p>{{ description }}</p>
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p>SKU: {{ product.base_sku }}</p>
     </div>
 </template>
 
@@ -9,8 +10,7 @@
 export default {
     name: 'ProductInfo',
     props: {
-        name: Object,
-        description: String
+        product: Object
     }
 }
 </script>
