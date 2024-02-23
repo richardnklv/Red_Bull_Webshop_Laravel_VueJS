@@ -1,24 +1,24 @@
 <template>
-    <div v-if="product" class="product-display">
+    <div class="product-display" v-if="product">
         <h1>{{ product.name }}</h1>
-        <p>SKU: {{ product.base_sku }}</p>
-        <p>{{ product.description }}</p>
-        <p>Base Price: ${{ product.base_price }}</p>
+        <h1>{{ product.description }}</h1>
     </div>
 </template>
+
 
 <script>
 import axios from "axios";
 
 export default {
+    name: 'ProductDisplay',
+    props: {
+        productId: Number,
+        required: true
+    },
     data() {
         return {
             product: null,
         };
-    },
-    props: {
-        productId: Number,
-        required: true
     },
     mounted() {
         this.fetchProduct();
@@ -31,12 +31,12 @@ export default {
                 })
                 .catch(error => {
                     console.error('Error fetching product: ', error);
-                })
+                });
         }
     }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
