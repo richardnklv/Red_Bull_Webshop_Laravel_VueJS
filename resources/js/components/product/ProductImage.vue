@@ -14,9 +14,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.product-image img{
-    max-width: 20%;
-    height: auto;
-}
+<style>
+
 </style>

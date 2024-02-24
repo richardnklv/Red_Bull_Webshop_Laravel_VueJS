@@ -1,8 +1,8 @@
 <template>
     <div class="product-info">
-        <h1>{{ product.name }}</h1>
-        <p>{{ product.description }}</p>
-        <p>SKU: {{ product.base_sku }}</p>
+        <h1 class="product-name">{{ product.name }}</h1>
+        <p class="sku">Sku: {{ product.base_sku }}</p>
+        <p class="description">{{ product.description }}</p>
     </div>
 </template>
 
@@ -15,6 +15,50 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@font-face {
+    font-family: Okomito;
+    src: url('resources/css/Okomito-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: CoupletCF;
+    src: url("resources/css/Fontspring-DEMO-coupletcf-regular.otf") format('truetype');
+    //font-weight: bold;
+}
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.product-name {
+    flex: 1;
+    color: #ffffff; /* White color for the product name */
+    font-family: Okomito,sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.3;
+    margin-right: 30vw;
+    padding-bottom: 13px;
+
+}
+.sku {
+     color: #686868; /* Grey color for the SKU */
+     font-size: 13px;
+     font-family: sans-serif;
+    padding-bottom: 15px;
+ }
+.description {
+    color: #ffffff;
+    padding-right: 27vw;
+    font-size: 13px;
+    font-family: CoupletCF, sans-serif;
+    line-height: 1.45;
+    padding-bottom: 10px;
+
+
+}
+
 
 </style>

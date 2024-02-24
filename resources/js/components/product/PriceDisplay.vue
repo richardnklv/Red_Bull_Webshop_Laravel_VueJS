@@ -1,7 +1,13 @@
 <template>
     <div class="price-display">
-        <p>YOUR PRICE</p>
-        <p class="price">${{ product.base_price }}</p>
+        <div class="previous">
+            <p class="from">FROM</p>
+            <p class="price-before">$ 1.999,99</p>
+        </div>
+        <div class="after">
+            <p class="your-price">YOUR PRICE</p>
+            <p class="price">$ {{ product.base_price }}</p>
+        </div>
     </div>
 </template>
 
@@ -14,9 +20,44 @@ export default {
 }
 </script>
 
-<style>
-.price {
+<style scoped>
+@font-face {
+    font-family: TafelSans;
+    src: url('resources/css/TafelSansPro-Regular.ttf') format('truetype');
     font-weight: bold;
+}
+.previous {
+    padding-right: 45px;
+}
+.price-display {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+
+}
+.your-price {
+    color: #727272;
+    font-size: 10px;
+    font-family: TafelSans, sans-serif;
+    font-weight: bold;
+}
+.from {
+    color: #727272;
+    font-size: 10px;
+    font-family: TafelSans, sans-serif;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+.price {
+    font-family: CoupletCF, sans-serif;
+    font-weight: bold;
+    color: #ffa800; /* Orange color for the price */
+}
+.price-before {
+    font-family: CoupletCF, sans-serif;
+    text-decoration: line-through;
+    color: #727272;
+    font-size: 12px;
 }
 
 </style>

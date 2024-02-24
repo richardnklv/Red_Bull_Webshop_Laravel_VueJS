@@ -1,9 +1,8 @@
 <template>
     <div class="product-display" v-if="product">
-        <product-info :product="product"></product-info>
-        <price-display :product="product"></price-display>
-        <product-image></product-image>
-        <product-options :optionTypes="product.option_types" @update-price="handlePriceUpdate"></product-options>
+        <product-info class="product-info" :product="product"></product-info>
+        <price-display class="price-display" :product="product"></price-display>
+        <product-options class="product-options" :optionTypes="product.option_types" @update-price="handlePriceUpdate"></product-options>
     </div>
 </template>
 
@@ -49,5 +48,17 @@ export default {
 </script>
 
 <style>
+.product-display {
+
+}
+.product-info {
+
+}
+.price-display {
+
+}
+.product-options {
+
+}
 
 </style>
