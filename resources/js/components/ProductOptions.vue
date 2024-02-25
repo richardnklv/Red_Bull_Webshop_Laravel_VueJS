@@ -2,10 +2,12 @@
     <div class="product-options">
         <div v-for="optionType in optionTypes" :key="optionType.id">
 
-            <select v-model="selectedOptions[optionType.type]"
-                    class="options">
+            <select v-model="selectedOptions[optionType.id]"
+                    class="options"
+                    @change="updateOption(optionType)"
+            >
                 <option disabled value=""
-                        selected v-if="!selectedOptions[optionType.type]"
+                        selected v-if="!selectedOptions[optionType.id]"
                         >
                     {{ optionType.type }}</option>
                 <option
@@ -21,6 +23,8 @@
 </template>
 
 <script>
+import * as selectedOptions from "autoprefixer";
+
 export default {
     name: 'ProductOptions',
     props: {
@@ -30,22 +34,38 @@ export default {
     },
     data() {
         return {
-            selectedOptions: {}
+            product: null,
+            selectedOptions: {},
+            fullSku: '',
         };
     },
     methods: {
         updatePrice() {
-            this.$emit('update-price', this.selectedOptions);
-        }
+            // handle logic
+        },
+        updateOption(optionType) {
+            // handle logic
+            console.log('Selected Option Value ID:', this.selectedOptions[optionType.type], 'for Option Type:', optionType.type);
+            console.log(this.selectedOptions);
+            let skuParts = '';
+            for (let optionType in this.selectedOptions) {
+                const optionValueId = this.selectedOptions[optionType];
+                console.log(optionValueId);
+                skuParts += (`-${optionType}-${optionValueId}`);
+
+            }
+            this.fullSku = skuParts;
+            this.$emit('option-changed', this.fullSku)
+            console.log(this.fullSku);
+            // this.$emit('option-changed',
+            //     optionType.id,
+            //     this.selectedOptions[optionType.type],
+            // )
+        },
+
     },
-    watch: {
-        selectedOptions: {
-            handler() {
-                this.updatePrice();
-            },
-            deep: true
-        }
-    }
+
+
 }
 </script>
 

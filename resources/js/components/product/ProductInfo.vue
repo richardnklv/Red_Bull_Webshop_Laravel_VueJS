@@ -1,7 +1,7 @@
 <template>
     <div class="product-info">
         <h1 class="product-name">{{ product.name }}</h1>
-        <p class="sku">Sku: {{ product.base_sku }}</p>
+        <p class="sku">Sku: {{ sku }}</p>
         <p class="description">{{ product.description }}</p>
     </div>
 </template>
@@ -10,7 +10,8 @@
 export default {
     name: 'ProductInfo',
     props: {
-        product: Object
+        product: Object,
+        sku: String,
     }
 }
 </script>

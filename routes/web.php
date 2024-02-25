@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,9 @@ Route::get('/', function () {
     //]
 );
 });
+
+Route::post('checkout',
+    [CheckoutController::class, 'showCheckoutPage']
+)->name('checkout');
+
+

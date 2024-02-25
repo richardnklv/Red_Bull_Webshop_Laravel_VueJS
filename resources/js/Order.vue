@@ -28,7 +28,7 @@ export default {
 
 .app-container {
     background-color: #363636; /* Dark background for the whole page */
-     /* This enables flexbox layout */
+    /* This enables flexbox layout */
     width: 100vw; /* 100% of the viewport width */
     min-height: 100vh; /* 100% of the viewport height */
     justify-content: center; /* This centers the children horizontally */

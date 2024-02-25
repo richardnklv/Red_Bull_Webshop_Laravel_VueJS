@@ -14,6 +14,7 @@ class OptionValue extends Model
         return $this->belongsTo(OptionType::class, 'option_type_id');
     }
 
+
     public function getIdentifier()
     {
         // relationship type and links to OptionType

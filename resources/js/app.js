@@ -4,6 +4,7 @@ import App from "@/App.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import axios from "axios";
 import ProductDisplay from "@/components/ProductDisplay.vue";
+import Order from "@/Order.vue";
 
 
 // createApp(HelloWorld).mount('#app');
@@ -12,5 +13,8 @@ import ProductDisplay from "@/components/ProductDisplay.vue";
 //
 const app = createApp(App);
 app.mount('#app');
+
+const order = createApp(Order);
+order.mount('#order');
 
 
