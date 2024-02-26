@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 import App from "@/App.vue";
 import Home from "@/Home.vue";
 import Checkout from "@/components/Checkout.vue";
@@ -10,12 +10,17 @@ const routes = [
         component: Home,
     },
     {
-        path: '/checkout', //:productId',
+        path: '/checkout/:productId', //:productId',
         name: 'Checkout',
         component: Checkout,
         props: true,
     },
-    // Define other routes as needed
+    // redirect everything else to home
+    {
+        path: '/:catchAll(.*)',
+        redirect: '/',
+    }
+    // define other routes
 ];
 
 const router = createRouter({

@@ -3,7 +3,12 @@
         <product-info class="product-info" :product="product" :sku="fullSku"></product-info>
         <price-display class="price-display" :product="product"></price-display>
         <product-options class="product-options" :optionTypes="product.option_types" @option-changed="updateSKU" @update-price="handlePriceUpdate"></product-options>
-        <order-button class="order-button" :product="product" :productId="productId" @orderNow="handleOrderNow"></order-button>
+        <order-button class="order-button"
+                      :product="product"
+                      :productId="product.id"
+                      :sku="fullSku"
+        ></order-button>
+<!--        <order-button class="order-button" :product="product" :productId="product.id" :fullSku="fullSku"  @orderNow="handleOrderNow"></order-button>-->
     </div>
 </template>
 
@@ -63,6 +68,7 @@ export default {
         updateSKU(sku) {
 
             this.fullSku = this.base_Sku + sku;
+            console.log('UpdateSKU: ', this.fullSku) // works
         },
         handleOrderNow() {
             // example
