@@ -1,19 +1,28 @@
 <template>
     <div class="button-container">
-    <form method="POST" :action="'/order'">
-        <input type="hidden" name="_token" :value="csrf">
-
-        <input type="hidden" name="product_id" :value="product.id">
-        <button type="submit" class="order-button">Order now</button>
-    </form>
+        <input type="hidden" name="productId" :value="productId" >
+        <button @click="navigateToCheckout()" type="submit" class="order-button">Order now</button>
     </div>
 </template>
 
 <script>
+
+
+
 export default {
     name: 'OrderButton',
     props: {
-        product: Object
+        productId: Number,
+        required: true,
+    },
+    methods: {
+        navigateToCheckout() {
+            this.$router.push({
+                path: 'Checkout',
+                params: { productId: this.productId }
+                //query: { product_id: this.product.id}
+            });
+        }
     }
 }
 </script>

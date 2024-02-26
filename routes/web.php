@@ -24,7 +24,7 @@ Route::get('/', function () {
 );
 });
 
-Route::post('checkout',
+Route::get('/checkout',
     [CheckoutController::class, 'showCheckoutPage']
 )->name('checkout');
 

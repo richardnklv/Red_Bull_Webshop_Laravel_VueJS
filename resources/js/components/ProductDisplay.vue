@@ -3,7 +3,7 @@
         <product-info class="product-info" :product="product" :sku="fullSku"></product-info>
         <price-display class="price-display" :product="product"></price-display>
         <product-options class="product-options" :optionTypes="product.option_types" @option-changed="updateSKU" @update-price="handlePriceUpdate"></product-options>
-        <order-button class="order-button" :product="product"></order-button>
+        <order-button class="order-button" :product="product" :productId="productId" @orderNow="handleOrderNow"></order-button>
     </div>
 </template>
 
@@ -18,7 +18,7 @@ import OrderButton from "@/components/OrderButton.vue";
 
 export default {
     name: 'ProductDisplay',
-    components: {OrderButton, ProductInfo, PriceDisplay, ProductImage, ProductOptions},
+    components: {OrderButton, ProductInfo, PriceDisplay, ProductOptions},
     props: {
         productId: Number,
         required: true
@@ -29,6 +29,7 @@ export default {
             additionalCosts: 0, // calculated based on selected options
             selectedOptions: {},
             fullSku: '',
+            base_Sku: '',
         };
     },
     mounted() {
@@ -41,6 +42,7 @@ export default {
                 .then(response => {
                     this.product = response.data;
                     this.fullSku = this.product.base_sku;
+                    this.base_Sku = this.product.base_sku;
                 })
                 .catch(error => {
                     console.error('Error fetching product: ', error);
@@ -59,7 +61,17 @@ export default {
         // },
 
         updateSKU(sku) {
-            this.fullSku = this.product.base_sku + sku;
+
+            this.fullSku = this.base_Sku + sku;
+        },
+        handleOrderNow() {
+            // example
+            this.$router.push({
+                path: '/checkout',
+                //query: { product_id: productId}
+                query: { product: JSON.stringify(this.product), options: JSON.stringify(this.selectedOptions) }
+
+            });
         }
 
     }
