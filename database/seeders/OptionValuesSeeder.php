@@ -35,6 +35,22 @@ class OptionValuesSeeder extends Seeder
             'additional_cost' => 29.99
         ]);
 
+        // Red2 option
+        OptionValue::create([
+            'id' => 131,
+            'option_type_id' => $optionColor2->id,
+            'value' => 'Red',
+            'additional_cost' => 200.99
+        ]);
+
+        // Black2
+        OptionValue::create([
+            'id' => 142,
+            'option_type_id' => $optionColor2->id,
+            'value' => 'Black',
+            'additional_cost' => 300.99
+        ]);
+
         // Medium
         OptionValue::create([
             'id' => 121,

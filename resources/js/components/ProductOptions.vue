@@ -37,6 +37,7 @@ export default {
             product: null,
             selectedOptions: {},
             fullSku: '',
+            totalPrice: Number,
         };
     },
     methods: {
@@ -50,18 +51,37 @@ export default {
             let skuParts = '';
             for (let optionType in this.selectedOptions) {
                 const optionValueId = this.selectedOptions[optionType];
-                console.log(optionValueId);
+                console.log(optionValueId); // works
                 skuParts += (`-${optionType}-${optionValueId}`);
 
             }
             this.fullSku = skuParts;
             this.$emit('option-changed', this.fullSku)
-            console.log(this.fullSku);
+            console.log(this.fullSku); // works
+            // this.$emit(this.selectedOptions, optionType, this.selectedOptions[optionType]);
+
+            //this.$emit('update-price');
+            this.$emit('option-selected', this.selectedOptions);
+            this.$emit('update-price', this.selectedOptions);
+            //this.calculatePrice();
+            console.log("?", this.totalPrice); // not working
             // this.$emit('option-changed',
             //     optionType.id,
             //     this.selectedOptions[optionType.type],
             // )
         },
+        // calculatePrice() {
+        //     let price = parseFloat(this.product.base_price);
+        //     Object.values(this.selectedOptions).forEach(optionValueId => {
+        //         const optionValue = this.findOptionValueById[optionValueId];
+        //         if (optionValue) {
+        //             price += parseFloat(optionValue.additional_cost);
+        //         }
+        //     });
+        //     this.totalPrice = price.toFixed(2);
+        //     this.$emit('update-price', this.totalPrice);
+        // },
+
 
     },
 

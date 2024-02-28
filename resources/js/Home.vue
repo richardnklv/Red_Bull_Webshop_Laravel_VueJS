@@ -4,7 +4,7 @@
             <product-image class="static-image"></product-image>
         </div>
         <div class="product-display-container">
-            <product-display :productId="1"></product-display>
+            <product-display :productId=1></product-display>
         </div>
 
     </div>

@@ -29,5 +29,11 @@ class OptionTypesSeeder extends Seeder
             'product_id' => $product->id,
             'type' => 'Size'
         ]);
+        // Color2
+        OptionType::create([
+            'id' => 14,
+            'product_id' => $product->id,
+            'type' => 'Size'
+        ]);
     }
 }

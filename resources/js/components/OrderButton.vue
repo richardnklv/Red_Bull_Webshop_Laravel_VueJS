@@ -3,7 +3,10 @@
 <!--        <input type="hidden" name="productId" :value="productId" >-->
         <router-link :to="{name: 'Checkout',
         params: {productId: productId} ,
-        query: {productId: productId, sku: sku}}">
+        query: {
+            productId: productId,
+            sku: sku,
+            totalPrice: totalPrice}}">
 
         <button  type="submit" class="order-button">Order now</button>
         </router-link>
@@ -22,6 +25,7 @@ export default {
         productId: Number,
         sku: String,
         required: true,
+        totalPrice: Number,
     },
     // methods: {
     //     navigateToCheckout() {

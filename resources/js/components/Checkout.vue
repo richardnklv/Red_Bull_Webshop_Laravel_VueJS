@@ -3,6 +3,7 @@
         <h1>Thank you for your order!</h1>
         <p>Product ID: {{ productId }}</p>
         <p>Full SKU: {{ sku }}</p>
+        <p>Total Price: {{ totalPrice }}</p>
 
 
 
@@ -16,10 +17,13 @@ export default {
     props: {
         productId: Number,
         sku: String,
+        totalPrice: Number,
     },
     mounted() {
         this.productId = this.$route.query.productId;
         this.sku = this.$route.query.sku;
+        this.totalPrice = this.$route.query.totalPrice;
+
         console.log('Product ID:', this.productId);
         console.log('SKU:', this.sku);
     },
@@ -27,6 +31,7 @@ export default {
         return {
             productId: '',
             sku: '',
+            totalPrice: '',
         };
     },
     // data() {
