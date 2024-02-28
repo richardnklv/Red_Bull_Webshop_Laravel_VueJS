@@ -1,8 +1,9 @@
 <template>
     <div class="product-options">
-        <div v-for="optionType in optionTypes" :key="optionType.id">
+        <div v-for="(optionType, index) in optionTypes" :key="optionType.id">
 
             <select v-model="selectedOptions[optionType.id]"
+                    :disabled="index !== 0 && !isFirstOptionSelected()"
                     class="options"
                     @change="updateOption(optionType)"
             >
@@ -52,7 +53,7 @@ export default {
             for (let optionType in this.selectedOptions) {
                 const optionValueId = this.selectedOptions[optionType];
                 console.log(optionValueId); // works
-                skuParts += (`-${optionType}-${optionValueId}`);
+                skuParts += (`${optionType}${optionValueId}`);
 
             }
             this.fullSku = skuParts;
@@ -70,6 +71,12 @@ export default {
             //     this.selectedOptions[optionType.type],
             // )
         },
+        isFirstOptionSelected() {
+            const firstOptionType = this.optionTypes[0];
+            return !!this.selectedOptions[firstOptionType.id];
+        },
+
+
         // calculatePrice() {
         //     let price = parseFloat(this.product.base_price);
         //     Object.values(this.selectedOptions).forEach(optionValueId => {

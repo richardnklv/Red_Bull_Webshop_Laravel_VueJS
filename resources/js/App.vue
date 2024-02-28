@@ -11,7 +11,7 @@
 </template>
 <script>
 import Home from "@/Home.vue";
-import Checkout from "@/components/Checkout.vue";
+import Checkout from "@/components/checkout/Checkout.vue";
 import ProductDisplay from "@/components/ProductDisplay.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import ProductImage from "@/components/product/ProductImage.vue";

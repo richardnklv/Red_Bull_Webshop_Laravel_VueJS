@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import App from "@/App.vue";
 import Home from "@/Home.vue";
-import Checkout from "@/components/Checkout.vue";
+import Checkout from "@/components/checkout/Checkout.vue";
 
 const routes = [
     {

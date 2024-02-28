@@ -1,7 +1,10 @@
 <template>
     <div class="product-display" v-if="product">
         <product-info class="product-info" :product="product" :sku="fullSku"></product-info>
-        <price-display class="price-display" :product="product"></price-display>
+        <price-display class="price-display"
+                       :product="product"
+                       :display-price="product.base_price"
+        ></price-display>
 
         <product-options class="product-options"
                          :optionTypes="product.option_types"
@@ -9,13 +12,12 @@
                          @option-selected="handleOptionSelected"
                          @update-price="calculatePrice"
         ></product-options>
-        <h1> {{ totalPrice }}</h1>
 
         <order-button class="order-button"
-                      :product="product"
                       :productId="product.id"
                       :sku="fullSku"
                       :totalPrice="totalPrice"
+
         >
         </order-button>
 <!--        <order-button class="order-button" :product="product" :productId="product.id" :fullSku="fullSku"  @orderNow="handleOrderNow"></order-button>-->
@@ -35,6 +37,7 @@ export default {
     name: 'ProductDisplay',
     components: {OrderButton, ProductInfo, PriceDisplay, ProductOptions},
     props: {
+        product: null,
         productId: Number,
         required: true
     },

@@ -13,18 +13,20 @@
 import ProductDisplay from "@/components/ProductDisplay.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
 import ProductImage from "@/components/product/ProductImage.vue";
+import PriceDisplay from "@/components/product/PriceDisplay.vue";
 
 
 export default {
     name: 'Home',
     components: {
+        PriceDisplay,
         ProductDisplay,
         ProductImage,
     },
 };
 </script>
 
-<style>
+<style scoped>
 
 .app-container {
     background-color: #363636; /* Dark background for the whole page */
@@ -61,6 +63,12 @@ export default {
     max-width: 50%; /* Optional: adjust this value as needed */
 
 }
+.price-display.price-display.after.price {
+    font-family: CoupletCF, sans-serif;
+    font-weight: bold;
+    color: #ffa800; /* Orange color for the price */
+}
+
 
 
 
