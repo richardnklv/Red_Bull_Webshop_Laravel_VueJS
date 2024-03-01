@@ -30,7 +30,8 @@ export default {
 .product-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    //align-items: flex-start;
+    //min-width: 40vw;
 
 }
 .product-name {
@@ -40,7 +41,7 @@ export default {
     font-weight: bold;
     font-size: 30px;
     line-height: 1.3;
-    margin-right: 30vw;
+    //margin-right: 30vw;
     padding-bottom: 13px;
 
 }
@@ -52,7 +53,7 @@ export default {
  }
 .description {
     color: #ffffff;
-    padding-right: 27vw;
+    //padding-right: 0;
     font-size: 13px;
     font-family: CoupletCF, sans-serif;
     line-height: 1.45;

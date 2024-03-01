@@ -1,6 +1,7 @@
 <template>
     <div class="product-image">
-        <img :src="`https://simracewebshop.com/wp-content/uploads/2021/10/playseat_evolution_red_bull_-_front.png`"
+<!--        <img :src="`https://simracewebshop.com/wp-content/uploads/2021/10/playseat_evolution_red_bull_-_front.png`"-->
+        <img src="../../../../resources/css/93290991_4072438332.jpeg"
              class="image"
              alt="Product image" />
     </div>
@@ -15,12 +16,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .image {
     border-radius: 3px;
-    width: 400px; /* Or any other fixed width */
-    height: auto; /* This maintains the aspect ratio */
-    object-fit: cover; /* This will cover the area without stretching the image */
+    //width: 400px;
+    //height: auto;
+
 }
 
 </style>

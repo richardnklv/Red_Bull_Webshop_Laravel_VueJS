@@ -1,14 +1,15 @@
 <template>
     <div class="button-container">
-<!--        <input type="hidden" name="productId" :value="productId" >-->
         <router-link :to="{name: 'Checkout',
         params: {productId: productId} ,
         query: {
-            productId: productId,
-            sku: sku,
-            totalPrice: totalPrice}}">
+            productName: this.productName,
+            productId: this.productId,
+            sku: this.sku,
+            totalPrice: this.totalPrice
+        }}">
 
-        <button  type="submit" class="order-button">Order now</button>
+        <button  type="submit" class="order-button"><i class="fa fa-shopping-cart"></i> Order now</button>
         </router-link>
     </div>
 
@@ -22,20 +23,12 @@ export default {
 
     name: 'OrderButton',
     props: {
+        productName: String,
         productId: Number,
         sku: String,
         required: true,
         totalPrice: Number,
     },
-    // methods: {
-    //     navigateToCheckout() {
-    //         this.$router.push({
-    //             path: 'Checkout',
-    //             params: { productId: this.productId }
-    //             //query: { product_id: this.product.id}
-    //         });
-    //     }
-    // }
 }
 </script>
 
@@ -43,7 +36,7 @@ export default {
 .button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
     width: 230px;
     height: 40px;
 }
@@ -55,6 +48,9 @@ export default {
     font-weight: bold;
     align-items: center;
     font-size: 16px;
+}
+.fa-shopping-cart {
+    font-size: 14px;
 }
 </style>
 

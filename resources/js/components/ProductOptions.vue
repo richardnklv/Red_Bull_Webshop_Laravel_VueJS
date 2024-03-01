@@ -1,6 +1,8 @@
 <template>
     <div class="product-options">
-        <div v-for="(optionType, index) in optionTypes" :key="optionType.id">
+        <div v-for="(optionType, index) in optionTypes"
+             :key="optionType.id"
+        >
 
             <select v-model="selectedOptions[optionType.id]"
                     :disabled="index !== 0 && !isFirstOptionSelected()"
@@ -9,13 +11,16 @@
             >
                 <option disabled value=""
                         selected v-if="!selectedOptions[optionType.id]"
-                        >
+                        class="option-values"
+                >
                     {{ optionType.type }}</option>
                 <option
                     class="options-content"
                     v-for="optionValue in optionType.option_values"
                     :key="optionValue.id"
-                    :value="optionValue.id">
+                    :value="optionValue.id"
+
+                >
                     {{ optionValue.value }} (+${{ optionValue.additional_cost }})
                 </option>
             </select>
@@ -24,7 +29,6 @@
 </template>
 
 <script>
-import * as selectedOptions from "autoprefixer";
 
 export default {
     name: 'ProductOptions',
@@ -41,10 +45,9 @@ export default {
             totalPrice: Number,
         };
     },
+
     methods: {
-        updatePrice() {
-            // handle logic
-        },
+
         updateOption(optionType) {
             // handle logic
             console.log('Selected Option Value ID:', this.selectedOptions[optionType.type], 'for Option Type:', optionType.type);
@@ -56,56 +59,35 @@ export default {
                 skuParts += (`${optionType}${optionValueId}`);
 
             }
+
             this.fullSku = skuParts;
             this.$emit('option-changed', this.fullSku)
-            console.log(this.fullSku); // works
-            // this.$emit(this.selectedOptions, optionType, this.selectedOptions[optionType]);
 
-            //this.$emit('update-price');
             this.$emit('option-selected', this.selectedOptions);
             this.$emit('update-price', this.selectedOptions);
-            //this.calculatePrice();
-            console.log("?", this.totalPrice); // not working
-            // this.$emit('option-changed',
-            //     optionType.id,
-            //     this.selectedOptions[optionType.type],
-            // )
         },
         isFirstOptionSelected() {
             const firstOptionType = this.optionTypes[0];
             return !!this.selectedOptions[firstOptionType.id];
         },
-
-
-        // calculatePrice() {
-        //     let price = parseFloat(this.product.base_price);
-        //     Object.values(this.selectedOptions).forEach(optionValueId => {
-        //         const optionValue = this.findOptionValueById[optionValueId];
-        //         if (optionValue) {
-        //             price += parseFloat(optionValue.additional_cost);
-        //         }
-        //     });
-        //     this.totalPrice = price.toFixed(2);
-        //     this.$emit('update-price', this.totalPrice);
-        // },
-
-
-    },
-
-
+    }
 }
+
+
 </script>
 
 <style scoped>
-/* Styling for the select element */
 .options {
-    -webkit-appearance: none; /* for Chrome, Safari */
-    -moz-appearance: none;    /* for Firefox */
-    appearance: none;         /* for modern browsers */
-    background-color: #727272; /* Grey color for the selection options */
-    color: #000000; /* Black color for the selected text */
-    border: 1px solid #000000; /* Black border color */
-    /* Custom arrow styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #727272;
+    color: #000000 !important;
+    border: 1px solid #000000;
+    font-size: 14px;
+    align-items: center;
+    padding: 4px 8px;
+    line-height: 1.5;
     background-image: url('data:image/svg+xml;utf8,<svg fill="%23000" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
@@ -114,40 +96,64 @@ export default {
     width: 300px;
     border-radius: 3px;
     margin-bottom: 10px;
+    font-family: CoupletCF, sans-serif;
+}
+.options option[value=""][disabled] {
+    color: #000000 !important;
 }
 
-/* Styling for the dropdown options */
 .options-content {
-    background-color: #727272; /* Grey color to match the select background */
-    color: #000000; /* White color for the dropdown options text */
+    background-color: #727272;
+    color: #000000 !important;
+
+}
+.option-values option{
+    color: #ffffff !important;
+}
+.options:hover{
+    background-color: #999999 !important;
+    color: #000000 !important;
+}
+
+
+
+.options:focus {
+    --tw-ring-color: #fff;
+    //outline: 1px solid var(--tw-ring-color); /* This applies the outline with the color defined in --tw-ring-color */
 }
 
 /* Remove IE arrow */
 .options::-ms-expand {
     display: none; /* For IE11 */
+
 }
 
 /* Style for placeholder, if applicable */
 .options::placeholder {
-    color: #ffffff;
+    color: #000000;
 }
 
-/* You can remove this if it's not applicable */
+
 .options-content[selected] {
     color: #000000;
 }
 .options::-ms-expand {
     display: none;
+    color: #000000;
 }
 
 /* Style for the first option that acts as a placeholder */
 .options option:first-of-type {
-    color: #000000; /* Black color for the placeholder option */
+    color: #000000 !important;
 }
 
 /* Style for the first option that acts as a placeholder when not selected */
 .options option:first-of-type:not(:checked) {
-    color: #000000; /* Black color for the placeholder option when not selected */
+    color: #000000 !important;
+}
+.options option::backdrop {
+    --tw-ring-color: #6b7280 !important;
+
 }
 
 </style>

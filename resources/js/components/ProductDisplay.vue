@@ -1,6 +1,8 @@
 <template>
     <div class="product-display" v-if="product">
-        <product-info class="product-info" :product="product" :sku="fullSku"></product-info>
+        <product-info class="product-info"
+                      :product="product"
+                      :sku="fullSku"></product-info>
         <price-display class="price-display"
                        :product="product"
                        :display-price="product.base_price"
@@ -12,12 +14,21 @@
                          @option-selected="handleOptionSelected"
                          @update-price="calculatePrice"
         ></product-options>
-
+        <div class="extra-option-container">
+            <input type="checkbox"
+                   id="extraOption"
+                   class="extra-option-checkbox"
+                    v-model="extraOptionSelected"
+            >
+            <label for="extraOption" class="extra-option-label">
+                <span class="extra-option-text">Extra option + €5,55</span>
+            </label>
+        </div>
         <order-button class="order-button"
+                      :productName="product.name"
                       :productId="product.id"
                       :sku="fullSku"
                       :totalPrice="totalPrice"
-
         >
         </order-button>
 <!--        <order-button class="order-button" :product="product" :productId="product.id" :fullSku="fullSku"  @orderNow="handleOrderNow"></order-button>-->
@@ -49,12 +60,19 @@ export default {
             fullSku: '',
             base_Sku: '',
             totalPrice: Number, // total price
+            extraOptionSelected: false,
         };
     },
     mounted() {
         this.fetchProduct();
         this.updateSKU();
-        // this.calculatePrice();
+    },
+    watch: {
+      extraOptionSelected(newVal, oldVal) {
+          if (newVal !== oldVal) {
+              this.calculatePrice();
+          }
+      }
     },
     methods: {
         calculatePrice() {
@@ -74,6 +92,9 @@ export default {
                             price += parseFloat(optionValue.additional_cost);
                         }
                     }
+                }
+                if (this.extraOptionSelected) {
+                    price += 5.55;
                 }
                 this.totalPrice = price.toFixed(2);
                 console.log("PRICE", price);
@@ -99,77 +120,48 @@ export default {
 
         },
 
-        // calculatePrice(selectedOptions) {
-        //     let price = parseFloat(this.product.base_price);
-        //
-        //     // Object.values(this.selectedOptions).forEach(optionValueId => {
-        //     //     const optionValue = this.findOptionValueById(optionValueId);
-        //     //     if (optionValue) {
-        //     //         price += parseFloat(optionValue.additional_cost);
-        //     //     }
-        //     // })
-        //
-        //     for (const optionTypeId of Object.keys(selectedOptions)) {
-        //         const optionType = this.product.option_types.find(
-        //             ot => ot.id === parseInt(optionTypeId)
-        //         );
-        //         // if found
-        //         if (optionType) {
-        //             const optionValue = optionType.option_values.find(
-        //                 ov => ov.id === selectedOptions[optionTypeId]
-        //             );
-        //             if (optionValue && optionValue.additional_cost) {
-        //                 price += parseFloat(optionValue.additional_cost);
-        //             }
-        //         }
-        //     }
-        //     this.totalPrice = price.toFixed(2);
-        // },
-        updateTotalPrice(newPrice) {
-            this.totalPrice = newPrice;
-        },
-        findOptionValueById(optionValueId) {
-            // find and return the option value by its id
-            for (const optionType of this.product.option_types) {
-                const optionValue = optionType.option_values.find(
-                    value => value.id === optionValueId
-                );
-                if (optionValue) return optionValue;
-            }
-            return null;
-        },
         updateSKU(sku) {
 
             this.fullSku = this.base_Sku + sku;
             console.log('UpdateSKU: ', this.fullSku) // works
 
         },
-        // handleOrderNow() {
-        //     // example
-        //     this.$router.push({
-        //         path: '/checkout',
-        //         //query: { product_id: productId}
-        //         query: { product: JSON.stringify(this.product), options: JSON.stringify(this.selectedOptions) }
-        //
-        //     });
-        // }
+
 
     }
 }
 </script>
 
 <style>
-.product-display {
+.extra-option-container {
+    display: flex;
+    align-items: center;
+    color: #949494; /* White text */
+    //padding: 8px 12px; /* Padding around the text */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 12px; /* Font size */
+    font-family: TafelSans, sans-serif; /* Font family */
 
 }
-.product-info {
 
+.extra-option-text {
+    //margin-right: 17px; /* Space between the text and price */
+    margin-top: 0.5px;
+    vertical-align: middle;
 }
-.price-display {
 
+.extra-option-price {
 }
-.product-options {
+.extra-option-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.extra-option-label {
 
+    display: flex;
+    align-items: center; /* Center label text and price vertically */
+    cursor: pointer; /* Pointer cursor on hover */
+    vertical-align: middle;
 }
 
 </style>
