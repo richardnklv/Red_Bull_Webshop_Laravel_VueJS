@@ -3,7 +3,6 @@
         <div v-for="(optionType, index) in optionTypes"
              :key="optionType.id"
         >
-
             <select v-model="selectedOptions[optionType.id]"
                     :disabled="index !== 0 && !isFirstOptionSelected()"
                     class="options"
@@ -21,7 +20,7 @@
                     :value="optionValue.id"
 
                 >
-                    {{ optionValue.value }} (+${{ optionValue.additional_cost }})
+                    {{ optionValue.value }} (+€{{ optionValue.additional_cost }})
                 </option>
             </select>
         </div>
@@ -82,7 +81,7 @@ export default {
     -moz-appearance: none;
     appearance: none;
     background-color: #727272;
-    color: #000000 !important;
+    color: #ffffff !important;
     border: 1px solid #000000;
     font-size: 14px;
     align-items: center;
@@ -98,7 +97,11 @@ export default {
     margin-bottom: 10px;
     font-family: CoupletCF, sans-serif;
 }
-.options option[value=""][disabled] {
+
+.options option {
+    color: #ffffff;
+}
+.options option:disabled {
     color: #000000 !important;
 }
 
@@ -106,6 +109,9 @@ export default {
     background-color: #727272;
     color: #000000 !important;
 
+}
+.option-values {
+    color: #ffffff !important;
 }
 .option-values option{
     color: #ffffff !important;
@@ -119,16 +125,16 @@ export default {
 
 .options:focus {
     --tw-ring-color: #fff;
-    //outline: 1px solid var(--tw-ring-color); /* This applies the outline with the color defined in --tw-ring-color */
+    //outline: 1px solid var(--tw-ring-color);
 }
 
-/* Remove IE arrow */
+
 .options::-ms-expand {
-    display: none; /* For IE11 */
+    display: none;
 
 }
 
-/* Style for placeholder, if applicable */
+
 .options::placeholder {
     color: #000000;
 }
@@ -142,14 +148,14 @@ export default {
     color: #000000;
 }
 
-/* Style for the first option that acts as a placeholder */
+
 .options option:first-of-type {
     color: #000000 !important;
 }
 
-/* Style for the first option that acts as a placeholder when not selected */
+
 .options option:first-of-type:not(:checked) {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 .options option::backdrop {
     --tw-ring-color: #6b7280 !important;

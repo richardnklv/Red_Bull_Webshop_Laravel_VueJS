@@ -32,21 +32,23 @@ export default {
     flex-direction: column;
     //align-items: flex-start;
     //min-width: 40vw;
+    max-width: 87%;
 
 }
 .product-name {
     flex: 1;
-    color: #ffffff; /* White color for the product name */
+    color: #ffffff;
     font-family: Okomito,sans-serif;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 34px;
     line-height: 1.3;
     //margin-right: 30vw;
     padding-bottom: 13px;
 
 }
 .sku {
-     color: #686868; /* Grey color for the SKU */
+     //color: #686868;
+    color: #9b9b9b;
      font-size: 13px;
      font-family: sans-serif;
     padding-bottom: 15px;

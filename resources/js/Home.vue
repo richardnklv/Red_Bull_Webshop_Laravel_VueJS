@@ -18,7 +18,6 @@
                 :productId=1
             ></product-display>
         </div>
-
     </div>
 </template>
 <script>
@@ -39,20 +38,55 @@ export default {
 
 <style scoped>
 
+@media (max-width: 840px) {
+    .home-container {
+        //grid-template-columns: 1fr !important;
+        //grid-template-rows: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 100vh !important;
+
+    }
+    .logo-image {
+        padding: 10px 15px 10px;
+        min-height: 50px;
+
+    }
+
+    .product-display-container {
+        max-width: 85vw;
+        padding: 0 15px 0;
+    }
+    .product-image-container {
+        min-width: 350px;
+        padding: 0 15px 0;
+
+    }
+    .static-image {
+        //min-width: 250px;
+        //max-height: 100% !important;
+        //max-height: 100% !important;
+        //width: auto;
+        object-fit: contain !important;
+    }
+
+}
+
 
 .home-container {
     display: grid;
     grid-template-columns: 3.5fr 8fr 7.5fr 3.5fr;
-    grid-template-rows: 1fr 3fr 26fr;
-    background-color: #363636; /* Dark background for the whole page */
-    /* This enables flexbox layout */
-    width: 100vw; /* 100% of the viewport width */
-    max-height: 100vh; /* 100% of the viewport height */
-    //justify-content: center; /* This centers the children horizontally */
-    //align-items: start; /* This aligns children to the top */
+    grid-template-rows: 1fr 2fr 16fr;
+    background-color: #363636;
+
+    //width: 100vw;
+    //height: 100vh;
+    //justify-content: center;
+    //align-items: start;
     //display: flex;
     //align-items: flex-start;
     //overflow: hidden;
+
 }
 .header-home {
     grid-column: 1 / 5;
@@ -60,6 +94,7 @@ export default {
     height: 42px;
     grid-template-rows: 30px 2px;
     grid-template-columns: 1fr;
+
 }
 
 .header {
@@ -88,37 +123,41 @@ export default {
 }
 .static-image {
 
-    max-width: calc((6.5/22.5)*100vw);
+    //max-width: calc((6.5/22.5)*100vw);
     //max-height: 20vh;
-    min-width: calc((5.5/22.5)*100vw);
-    min-height: 20vh;
-    width: 100%; /* This will make it responsive up to the max-width */
-    height: auto; /* This will maintain the aspect ratio */
+    //min-width: calc((5.5/22.5)*100vw);
+    //min-height: 20vh;
+    max-height: 100% !important;
+
 }
 .product-image-container {
-    /* Your styles for image */
+
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    //flex: 1; /* Adjust this value to give more or less space to the image */
-    //height: 50vh; /* This sets the maximum height to half of the viewport height */
+    //flex: 1;
+    //height: 50vh;
     //display: flex;
-    justify-content: start; /* This will align the image to the right */
-    //padding-right: 5%; /* Replace with your desired padding value */
+    //height: 30vh;
+    width: 30vw;
+    justify-content: start;
+    //object-fit: contain !important;
+    //padding-right: 5%;
 
 }
 .product-display-container {
-    /* Your styles for product display */
+
     //flex: 2;
     grid-column: 3 / 4;
     grid-row: 3 / 4;
-    min-width: calc((6.5/22.5)*100vw); /* Optional: adjust this value as needed */
+    min-width: calc((6.5/22.5)*100vw);
 
 }
 .price-display.price-display.after.price {
     font-family: CoupletCF, sans-serif;
     font-weight: bold;
-    color: #ffa800; /* Orange color for the price */
+    color: #ffa800;
 }
+
 
 
 

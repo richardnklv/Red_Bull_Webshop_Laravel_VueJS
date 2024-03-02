@@ -1,7 +1,7 @@
 <template>
     <div class="price-checkout-component">
         <p class="price-checkout">
-            $ {{ totalPrice }}
+            € {{ totalPrice }}
         </p>
     </div>
 </template>

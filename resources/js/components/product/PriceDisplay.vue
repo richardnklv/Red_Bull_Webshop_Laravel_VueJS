@@ -2,11 +2,11 @@
     <div class="price-display">
         <div class="previous">
             <p class="from">FROM</p>
-            <p class="price-before">$ 1.999,99</p>
+            <p class="price-before">€ 1.999,99</p>
         </div>
         <div class="after">
             <p class="your-price">YOUR PRICE</p>
-            <p class="price">$ {{ product.base_price }}</p>
+            <p class="price">€ {{ product.base_price }}</p>
         </div>
     </div>
 </template>
@@ -36,13 +36,15 @@ export default {
 
 }
 .your-price {
-    color: #727272;
+    //color: #727272;
+    color: #9b9b9b;
     font-size: 10px;
     font-family: TafelSans, sans-serif;
     font-weight: bold;
 }
 .from {
-    color: #727272;
+    //color: #727272;
+    color: #9b9b9b;
     font-size: 10px;
     font-family: TafelSans, sans-serif;
     font-weight: bold;
@@ -51,12 +53,13 @@ export default {
 .price {
     font-family: CoupletCF, sans-serif;
     font-weight: bold;
-    color: #ffa800; /* Orange color for the price */
+    color: #ffa800;
 }
 .price-before {
     font-family: CoupletCF, sans-serif;
     text-decoration: line-through;
-    color: #727272;
+    //color: #727272;
+    color: #9b9b9b;
     font-size: 12px;
 }
 

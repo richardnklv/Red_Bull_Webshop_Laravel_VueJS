@@ -21,6 +21,7 @@ export default {
     border-radius: 3px;
     //width: 400px;
     //height: auto;
+    object-fit: contain !important;
 
 }
 

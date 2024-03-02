@@ -136,16 +136,16 @@ export default {
 .extra-option-container {
     display: flex;
     align-items: center;
-    color: #949494; /* White text */
-    //padding: 8px 12px; /* Padding around the text */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 12px; /* Font size */
-    font-family: TafelSans, sans-serif; /* Font family */
+    color: #949494;
+    //padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: TafelSans, sans-serif;
 
 }
 
 .extra-option-text {
-    //margin-right: 17px; /* Space between the text and price */
+    //margin-right: 17px;
     margin-top: 0.5px;
     vertical-align: middle;
 }
@@ -159,8 +159,8 @@ export default {
 .extra-option-label {
 
     display: flex;
-    align-items: center; /* Center label text and price vertically */
-    cursor: pointer; /* Pointer cursor on hover */
+    align-items: center;
+    cursor: pointer;
     vertical-align: middle;
 }
 

@@ -1,4 +1,5 @@
 <template>
+
     <div class="checkout-container">
         <div class="header-checkout">
             <div class="header"></div>
@@ -10,13 +11,11 @@
                 class="logo-image"
                 alt="Logo image">
         </router-link>
-        <div class="left-bar"></div>
 
         <div class="product-display-checkout">
             <h1 class="thank-you">Thank you for your order</h1>
-            <div class="amount">1x</div>
+            <span class="amount">1x</span>
             <div class="image-container-checkout">
-<!--                <product-image class="image-checkout"></product-image>-->
                 <img src="../../../css/93290991_4072438332.jpeg"
                      class="image-checkout"
                      alt="Product image" />
@@ -30,12 +29,10 @@
                     :totalPrice="totalPrice"
                 ></price-checkout>
             </div>
-            <div class="space-below"></div>
 
         </div>
-        <div class="right-bar"></div>
-
     </div>
+
 </template>
 
 <script>
@@ -73,11 +70,6 @@ export default {
 
         };
     },
-    // data() {
-    //     return {
-    //         sku1: this.$route.params.sku,
-    //     }
-    // },
 
 };
 </script>
@@ -97,6 +89,60 @@ export default {
     src: url('resources/css/Inter-Bold.ttf') format('truetype');
     font-weight: bold;
 }
+@media (max-width: 1000px) {
+    .checkout-container {
+        //grid-template-columns: 1fr !important;
+        //grid-template-rows: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Adjust the layout of grid items accordingly */
+    .product-display-checkout {
+        display: flex;
+        flex-direction: row;
+    }
+
+}
+@media(max-width: 460px) {
+    .checkout-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .header {
+        order: 1 !important;
+    }
+    .logo-image {
+        margin-top: 20px;
+        order: 2 !important;
+    }
+    .product-display-checkout {
+        display: flex !important;
+        flex-direction: column !important;
+        max-height: 80vh !important;
+        order: 3;
+
+        //overflow: hidden;
+    }
+    .thank-you {
+        padding-top: 5vh;
+        order: 1;
+        margin-bottom: 5vh !important;
+    }
+    .image-container-checkout {
+        order: 3;
+    }
+    .amount {
+        visibility: hidden;
+        //align-self: center;
+    }
+    .product-information-checkout {
+        order: 4;
+        min-height: 30vh !important;
+        margin-top: 10px;
+    }
+}
+
 .checkout-container {
     display: grid;
     //height: 100vh;
@@ -108,6 +154,8 @@ export default {
     height: 100vh !important;
     max-width: 100vw !important;
     overflow: hidden;
+
+
 }
 .header-checkout {
     grid-column: 1 / 4;
@@ -142,38 +190,32 @@ export default {
     vertical-align: middle;
 }
 
-.left-bar {
-    grid-column: 1 / 1;
-    grid-row: 1 / 4;
-    padding-right: 0;
-}
-.right-bar {
-    grid-column: 2 / 2;
-    grid-row: 3 / 3;
-    padding-left: 0;
-}
+
 
 .product-display-checkout {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    max-height: calc((1.4/13.7)*100vh) !important;
+    max-height: calc((9/13.7)*100vh);
     display: grid;
-    grid-template-rows: calc((1.5/13.5)*100vh) calc((1.5/13.5)*100vh) calc((10.5/13.5)*100vh);
+    grid-template-rows: calc((1.8/13.5)*100vh) calc((1.5/13.5)*100vh) calc((10.5/13.5)*100vh);
     //grid-template-rows: 100px;
     //grid-template-columns: 0.6fr 2.5fr 11fr;
     grid-template-columns: 1.3fr 2.4fr 7.3fr;
     justify-content: center;
     //position: absolute;
     //left: 20%;
+    box-sizing: border-box;
+    //padding-bottom: 100px !important;
 
 }
 .thank-you {
     color: #ffffff;
     font-family: Okomito, sans-serif;
     font-size: 37px;
-    margin-bottom: 100px;
+    //margin-bottom: 100px;
     grid-column: 1 / 4;
     grid-row: 1 / 2;
+    box-sizing: border-box;
 
 }
 .amount {
@@ -186,17 +228,21 @@ export default {
     font-weight: bold;
     font-size: 25px;
     color: #ffffff;
+    box-sizing: border-box;
 }
 .image-container-checkout {
     //max-height: calc((1.5/13.5)*100vh);
-    max-height: calc((150/2234)*100vh) !important;
-    min-height: calc((150/2234)*100vh) !important;
+    //max-height: calc((150/2234)*100vh) !important;
+    //min-height: calc((150/2234)*100vh) !important;
     grid-column: 2 / 2;
     grid-row: 2 / 2;
+    box-sizing: border-box;
 }
 .image-checkout {
-    min-height: calc((1.5/13.5)*100vh) !important;
-    max-height: calc((1.4/13.7)*100vh);
+    //min-height: calc((1.5/13.5)*100vh) !important;
+    //max-height: calc((1.4/13.7)*100vh);
+    max-height: 100%;
+    object-fit: cover;
     width: auto;
     border-radius: 3px;
     //object-fit: contain;
@@ -204,7 +250,7 @@ export default {
 .product-information-checkout {
     display: grid;
     //height: calc((1.4/13.7)*100vh) !important;
-    max-height: calc((1.4/13.7)*100vh) !important;
+    max-height: calc((1.4/13.7)*100vh);
     grid-column: 3 / 4;
     grid-row: 2 / 2;
     //object-fit: contain !important;
@@ -228,9 +274,6 @@ export default {
     font-family: NeueMontreal, sans-serif;
     //font-weight: bold;
 }
-.space-below {
-    grid-column: 1 / 1;
-    grid-row: 3 / 3;
-}
+
 
 </style>
