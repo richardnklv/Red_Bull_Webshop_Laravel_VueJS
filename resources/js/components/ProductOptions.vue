@@ -47,6 +47,8 @@ export default {
 
     methods: {
 
+
+
         updateOption(optionType) {
             // handle logic
             console.log('Selected Option Value ID:', this.selectedOptions[optionType.type], 'for Option Type:', optionType.type);
@@ -112,6 +114,7 @@ export default {
 }
 .option-values {
     color: #ffffff !important;
+    visibility: visible;
 }
 .option-values option{
     color: #ffffff !important;
