@@ -146,7 +146,10 @@ export default {
 }
 
 .checkout-container {
-    display: grid;
+    //display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
     //height: 100vh;
     //width: 100vw;
     background-color: #363636;
@@ -166,6 +169,7 @@ export default {
     height: 32px;
     grid-template-rows: 30px 2px;
     grid-template-columns: 1fr;
+    //left: -200px !important;
 }
 
 .header {
@@ -183,6 +187,7 @@ export default {
 .logo-image {
     max-height: 35px;
     width: auto;
+
 }
 .logo {
     grid-column: 2 / 3;
@@ -191,6 +196,8 @@ export default {
     display: flex;
     align-items: center;
     vertical-align: middle;
+    padding-left: 15vw;
+
 }
 
 .-single-product-checkout {
@@ -203,6 +210,8 @@ export default {
     //grid-template-rows: auto;
     grid-row: 1 / 2;
     gap: 20px;
+    padding-left: 15vw;
+
 
     //gap: 20px; /* Adjust the gap between items as needed */
 }
@@ -232,6 +241,8 @@ export default {
     grid-column: 2 / 4;
     grid-row: 3 / 4;
     box-sizing: border-box;
+    padding-left: 15vw;
+    padding-bottom: 2vh;
 
 }
 .amount {
