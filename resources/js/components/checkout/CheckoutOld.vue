@@ -19,9 +19,7 @@
                      class="image-checkout"
                      alt="Product image" />
             </div>
-            <div>
-                {{ orders.product_id }}
-            </div>
+
             <div class="product-information-checkout">
                 <product-info-checkout class="product-info-checkout"
                     :productName="productName"

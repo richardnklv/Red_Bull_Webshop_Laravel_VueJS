@@ -15,7 +15,23 @@
 
     <div v-for="product in orderedProducts" :key="product.id"
     class="product-display-checkout">
-       <h1 class="test"> {{ product.quantity }}</h1>
+        <div class="-single-product-checkout">
+           <h1 class="amount"> {{ product.quantity }}x</h1>
+            <div class="image-container-checkout">
+                <img src="../../../css/93290991_4072438332.jpeg"
+                     class="image-checkout"
+                     alt="Product image" />
+            </div>
+            <div class="product-information-checkout">
+                <product-info-checkout class="product-info-checkout"
+                                       :productName="product.name"
+                                       :sku="product.sku"
+                ></product-info-checkout>
+                <price-checkout class="price-checkout"
+                                :totalPrice="product.price"
+                ></price-checkout>
+            </div>
+        </div>
     </div>
 
     </div>
@@ -176,19 +192,29 @@ export default {
     vertical-align: middle;
 }
 
-
+.-single-product-checkout {
+    grid-column: 2;
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr; /* This creates a single column */
+    grid-template-rows: auto;
+    gap: 20px; /* Adjust the gap between items as needed */
+}
 
 .product-display-checkout {
     //grid-column: 2 / 3;
     //grid-row: 3 / 4;
     //max-height: calc((9/13.7)*100vh);
-    //display: grid;
+    display: grid;
     //grid-template-rows: calc((1.8/13.5)*100vh) calc((1.5/13.5)*100vh) calc((10.5/13.5)*100vh);
     //grid-template-columns: 1.3fr 2.4fr 7.3fr;
-    //justify-content: center;
+    justify-content: start;
     //box-sizing: border-box;
-    display: flex;
+    grid-column: 2 / 3;
+    grid-row: auto;
+    //display: flex;
     flex-direction: column;
+
 }
 .thank-you {
     color: #ffffff;
@@ -223,8 +249,9 @@ export default {
 .image-checkout {
     //min-height: calc((1.5/13.5)*100vh) !important;
     //max-height: calc((1.4/13.7)*100vh);
-    max-height: 100%;
-    object-fit: cover;
+    //max-height: 100%;
+    //object-fit: cover;
+    max-height: 10vh;
     width: auto;
     border-radius: 3px;
     //object-fit: contain;
