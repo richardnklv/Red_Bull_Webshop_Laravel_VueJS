@@ -9,7 +9,7 @@
             totalPrice: this.totalPrice
         }}">
 
-        <button  type="submit" class="order-button"><i class="fa fa-shopping-cart"></i> Order now</button>
+        <button @click="placeOrder" type="submit" class="order-button"><i class="fa fa-shopping-cart"></i> Order now</button>
         </router-link>
     </div>
 
@@ -28,6 +28,21 @@ export default {
         sku: String,
         required: true,
         totalPrice: Number,
+    },
+    methods: {
+      async placeOrder() {
+          try {
+              const response = await axios.post('api/orders', {
+                  product_id: this.productId,
+                  quantity: 1, // there is no box for adding multiple items
+                  sku: this.sku,
+                  price: this.totalPrice,
+              });
+              console.log('Order:', response.data); // WORKS :D
+          } catch (error) {
+              console.log('no way an error can happen');
+          }
+      }
     },
 }
 </script>

@@ -20,6 +20,9 @@
                      class="image-checkout"
                      alt="Product image" />
             </div>
+            <div>
+                {{ orders.product_id }}
+            </div>
             <div class="product-information-checkout">
                 <product-info-checkout class="product-info-checkout"
                     :productName="productName"
@@ -67,8 +70,18 @@ export default {
             sku: '',
             totalPrice: '',
             productName: '',
-
+            orders: [],
         };
+    },
+    methods: {
+        async fetchOrders() {
+            try {
+                const response = await axios.get('api/orders');
+                this.orders = response.data.order;
+            } catch (error) {
+                console.log('Failed to fetch orders', error);
+            }
+        }
     },
 
 };

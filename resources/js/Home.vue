@@ -78,7 +78,7 @@ export default {
     grid-template-columns: 3.5fr 8fr 7.5fr 3.5fr;
     grid-template-rows: 1fr 2fr 16fr;
     background-color: #363636;
-
+    height: 100vh;
     //width: 100vw;
     //height: 100vh;
     //justify-content: center;
