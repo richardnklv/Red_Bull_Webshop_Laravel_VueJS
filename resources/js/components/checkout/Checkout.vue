@@ -150,9 +150,10 @@ export default {
     //height: 100vh;
     //width: 100vw;
     background-color: #363636;
-    grid-template-columns: 3.5fr 11.5fr 8.5fr;
+    //grid-template-columns: 3.5fr 11.5fr 8.5fr;
     //grid-template-rows: 100vh;
-    grid-template-rows: 1fr 3fr 26fr;
+    //grid-template-rows: 1fr 3fr 3fr 26fr;
+    grid-template-rows: auto;
     height: 100vh !important;
     max-width: 100vw !important;
     overflow: hidden;
@@ -162,7 +163,7 @@ export default {
 .header-checkout {
     grid-column: 1 / 4;
     grid-row: 1 / 1;
-    height: 42px;
+    height: 32px;
     grid-template-rows: 30px 2px;
     grid-template-columns: 1fr;
 }
@@ -193,12 +194,17 @@ export default {
 }
 
 .-single-product-checkout {
-    grid-column: 2;
-    grid-row: 3 / 4;
-    display: grid;
-    grid-template-columns: 1fr; /* This creates a single column */
-    grid-template-rows: auto;
-    gap: 20px; /* Adjust the gap between items as needed */
+
+    //display: grid;
+    display: flex;
+    align-items: center;
+    //justify-content: right;
+    //grid-template-columns: 1fr 5fr 20fr; /* This creates a single column */
+    //grid-template-rows: auto;
+    grid-row: 1 / 2;
+    gap: 20px;
+
+    //gap: 20px; /* Adjust the gap between items as needed */
 }
 
 .product-display-checkout {
@@ -212,6 +218,8 @@ export default {
     //box-sizing: border-box;
     grid-column: 2 / 3;
     grid-row: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     //display: flex;
     flex-direction: column;
 
@@ -221,8 +229,8 @@ export default {
     font-family: Okomito, sans-serif;
     font-size: 37px;
     //margin-bottom: 100px;
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
+    grid-column: 2 / 4;
+    grid-row: 3 / 4;
     box-sizing: border-box;
 
 }
@@ -247,7 +255,7 @@ export default {
     box-sizing: border-box;
 }
 .image-checkout {
-    //min-height: calc((1.5/13.5)*100vh) !important;
+    min-height: calc((1.5/13.5)*100vh) !important;
     //max-height: calc((1.4/13.7)*100vh);
     //max-height: 100%;
     //object-fit: cover;
