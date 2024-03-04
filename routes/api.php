@@ -20,6 +20,8 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 
 Route::post('/orders', [CheckoutController::class, 'store']);
 
+Route::get('/ordered-products', [CheckoutController::class, 'fetchOrderedProducts']);
+
 //Route::post('/orders', 'CheckoutController@store');
 
 

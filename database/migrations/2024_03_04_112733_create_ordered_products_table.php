@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ordered_products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->integer('quantity');
             $table->string('sku');
             $table->decimal('price', 8, 2);

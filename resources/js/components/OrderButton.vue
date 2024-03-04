@@ -34,6 +34,7 @@ export default {
           try {
               const response = await axios.post('api/orders', {
                   product_id: this.productId,
+                  name: this.productName,
                   quantity: 1, // there is no box for adding multiple items
                   sku: this.sku,
                   price: this.totalPrice,

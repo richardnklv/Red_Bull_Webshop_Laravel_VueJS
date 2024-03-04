@@ -11,13 +11,28 @@
                 class="logo-image"
                 alt="Logo image">
         </router-link>
-        <h1 class="thank-you">Thank you for your order</h1>
+        <div class="product-display-checkout">
+            <h1 class="thank-you">Thank you for your order</h1>
+            <span class="amount">1x</span>
+            <div class="image-container-checkout">
+                <img src="../../../css/93290991_4072438332.jpeg"
+                     class="image-checkout"
+                     alt="Product image" />
+            </div>
+            <div>
+                {{ orders.product_id }}
+            </div>
+            <div class="product-information-checkout">
+                <product-info-checkout class="product-info-checkout"
+                    :productName="productName"
+                    :sku="sku"
+                ></product-info-checkout>
+                <price-checkout class="price-checkout"
+                    :totalPrice="totalPrice"
+                ></price-checkout>
+            </div>
 
-    <div v-for="product in orderedProducts" :key="product.id"
-    class="product-display-checkout">
-       <h1 class="test"> {{ product.quantity }}</h1>
-    </div>
-
+        </div>
     </div>
 
 </template>
@@ -33,34 +48,45 @@ export default {
     name: 'Checkout',
     components: {Header, ProductImage, PriceCheckout, ProductDisplay, ProductInfoCheckout},
 
-    // props: {
-    //     productId: Number,
-    //     sku: String,
-    //     totalPrice: Number,
-    // },
-    async mounted() {
-      try {
-        const response = await axios.get('/api/ordered-products');
-        this.orderedProducts = response.data;
-        console.log(response.data);
-      } catch (error) {
-          console.log('no way', error);
-      }
+    props: {
+        productId: Number,
+        sku: String,
+        totalPrice: Number,
+    },
+    mounted() {
+        this.productId = this.$route.query.productId;
+        this.sku = this.$route.query.sku;
+        this.totalPrice = this.$route.query.totalPrice;
+        this.productName = this.$route.query.productName;
+
+        console.log("AAAAAA", this.productName);
+        console.log('Product ID:', this.productId);
+        console.log('SKU:', this.sku);
     },
     data() {
         return {
-            orderedProducts: [],
+            productId: '',
+            sku: '',
+            totalPrice: '',
+            productName: '',
+            orders: [],
         };
     },
-
+    methods: {
+        async fetchOrders() {
+            try {
+                const response = await axios.get('api/orders');
+                this.orders = response.data.order;
+            } catch (error) {
+                console.log('Failed to fetch orders', error);
+            }
+        }
+    },
 
 };
 </script>
 
 <style scoped>
-.test {
-    color: red;
-}
 @font-face {
     font-family: Okomito;
     src: url('resources/css/Okomito-Bold.ttf') format('truetype');
@@ -179,16 +205,20 @@ export default {
 
 
 .product-display-checkout {
-    //grid-column: 2 / 3;
-    //grid-row: 3 / 4;
-    //max-height: calc((9/13.7)*100vh);
-    //display: grid;
-    //grid-template-rows: calc((1.8/13.5)*100vh) calc((1.5/13.5)*100vh) calc((10.5/13.5)*100vh);
-    //grid-template-columns: 1.3fr 2.4fr 7.3fr;
-    //justify-content: center;
-    //box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    max-height: calc((9/13.7)*100vh);
+    display: grid;
+    grid-template-rows: calc((1.8/13.5)*100vh) calc((1.5/13.5)*100vh) calc((10.5/13.5)*100vh);
+    //grid-template-rows: 100px;
+    //grid-template-columns: 0.6fr 2.5fr 11fr;
+    grid-template-columns: 1.3fr 2.4fr 7.3fr;
+    justify-content: center;
+    //position: absolute;
+    //left: 20%;
+    box-sizing: border-box;
+    //padding-bottom: 100px !important;
+
 }
 .thank-you {
     color: #ffffff;

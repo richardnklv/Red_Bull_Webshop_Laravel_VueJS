@@ -22,14 +22,35 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
+        $existingSKU = DB::table('ordered_products')
+            ->where('sku', $request->sku)
+            ->first();
+        if ($existingSKU) {
+            DB::table('ordered_products')
+                ->where('id', $existingSKU->id)
+                ->update([
+                    'quantity' =>$existingSKU->quantity + 1,
+                    'updated_at' => now(),
+                ]);
+        }
+        else {
+        // if no such sku
         DB::table('ordered_products')->insert([
-            'product_id' => $request->input('product_id'), // Ensure field name matches the request
-            'quantity' => $request->input('quantity'), // Use input method for consistency
+            'product_id' => $request->input('product_id'),
+            'name' => $request->input('name'),
+            'quantity' => $request->input('quantity'),
             'sku' => $request->input('sku'),
             'price' => $request->input('price'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+    }
         return response()->json($request);
+    }
+
+    public function fetchOrderedProducts()
+    {
+        $orderedProducts = DB::table('ordered_products')->get();
+        return response()->json($orderedProducts);
     }
 }
